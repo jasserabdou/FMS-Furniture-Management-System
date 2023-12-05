@@ -60,4 +60,23 @@ public class FurnitureCategory {
         // and if it can support more than 50 kilograms
         return isOutdoor && maximumLoad > 50.0;
     }
+
+    public void displayDetails() {
+        System.out.println("Furniture Category ID: " + id);
+        System.out.println("Furniture Type Name: " + typeName);
+        System.out.println("Maximum Load: " + maximumLoad);
+        System.out.println("Is Suitable for Outdoor Use: " + isOutdoor);
+        System.out.println("Recent Purchaser Details:");
+
+        if (recentPurchaser != null) {
+            recentPurchaser.displayDetails();
+        } else {
+            System.out.println("No recent purchaser associated with this category.");
+        }
+
+    }
+
+    public void setRecentPurchaser(Purchaser purchaser) {
+        this.recentPurchaser = purchaser;
+    }
 }

@@ -82,13 +82,7 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
         // Logic to populate furnitureItems and suppliers
         // This may involve instantiating new FurnitureBase and Purchaser objects and
         // adding them to the respective lists.
-        FurnitureBase furniture = new SofaItem("1", "Leather", 2, 500.0);
-        Purchaser purchaser = new Purchaser("P1", "John Doe", "Sofa");
-        furnitureItems.add(furniture);
-        customerOrders.add(purchaser);
 
-        FurnitureCategory category = new FurnitureCategory("C1", "Sofa", 200.0, false);
-        suppliers.add(category);
     }
 
     private void loadOrders() {
@@ -96,8 +90,6 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
         // This may involve instantiating new FurnitureCategory objects and adding them
         // to the list.
 
-        Purchaser purchaser = new Purchaser("P2", "Jane Smith", "Chair");
-        customerOrders.add(purchaser);
     }
 
     private void linkOrdersToFurniture() {
@@ -123,6 +115,24 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
 
     private FurnitureCategory retrieveCategory(String id) {
         return getCategoryByID(id);
+    }
+
+    public Purchaser getPurchaserByPreferredType(String preferredFurnitureType) {
+        for (Purchaser purchaser : customerOrders) {
+            if (purchaser.getFurnitureType().equalsIgnoreCase(preferredFurnitureType)) {
+                return purchaser;
+            }
+        }
+        return null; // Not found
+    }
+
+    public FurnitureBase getFurnitureByType(String preferredFurnitureType) {
+        for (FurnitureBase furniture : furnitureItems) {
+            if (furniture.getFurnitureCategory().equalsIgnoreCase(preferredFurnitureType)) {
+                return furniture;
+            }
+        }
+        return null; // Not found
     }
 
 }

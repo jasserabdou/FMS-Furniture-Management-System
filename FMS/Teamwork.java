@@ -1,6 +1,3 @@
-  
-
-
 /**
  * Details of your pair
  * 

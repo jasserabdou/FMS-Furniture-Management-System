@@ -7,15 +7,15 @@ import java.util.*;
  * @version (a version number or a date)
  */
 
+import java.util.Scanner;
+
 public class FurnitureStoreUI {
     private Scanner reader = new Scanner(System.in);
-    private FURNITUREInterface store = new FurnitureStore("Fortune Furnitures", "Downtown");
+    private FurnitureStore store = new FurnitureStore("Home Furnishings Depot", "Downtown");
 
     public void runUI() {
-
         int choice = getOption();
 
-        // process choice
         while (choice != 0) {
             switch (choice) {
                 case 1:
@@ -40,7 +40,6 @@ public class FurnitureStoreUI {
                     System.out.println("Invalid choice.");
             }
 
-            // output menu & get choice
             choice = getOption();
         }
         System.out.println("\nThank you for using Fortune Furnitures System.");
@@ -57,7 +56,6 @@ public class FurnitureStoreUI {
         System.out.println("6. View category details by ID");
         System.out.print("Enter your choice: ");
 
-        // read choice
         int option = reader.nextInt();
         reader.nextLine();
         return option;
@@ -80,23 +78,21 @@ public class FurnitureStoreUI {
         store.addFurniture(furniture2);
         store.addFurniture(furniture3);
         System.out.println("Furniture added successfully!");
-        ;
-
     }
 
     private void addPurchaser() {
-
         System.out.print("Enter purchaser ID: ");
         String id = reader.nextLine();
         System.out.print("Enter purchaser name: ");
         String name = reader.nextLine();
         System.out.print("Enter furniture type: ");
         String furnitureType = reader.nextLine();
+        System.out.print("Enter contact details: ");
+        String contactDetails = reader.nextLine();
 
-        Purchaser purchaser1 = new Purchaser(id, name, furnitureType);
+        Purchaser purchaser1 = new Purchaser(id, name, furnitureType, contactDetails, null);
         store.addPurchaser(purchaser1);
         System.out.println("Purchaser added successfully!");
-
     }
 
     private void addCategory() {
@@ -108,26 +104,16 @@ public class FurnitureStoreUI {
         double maxLoad = reader.nextDouble();
         System.out.print("Is outdoor (true/false): ");
         boolean isOutdoor = reader.nextBoolean();
-        while (true) {
-            String input = reader.next().toLowerCase();
-            if (input.equals("true") || input.equals("false")) {
-                isOutdoor = Boolean.parseBoolean(input);
-                break;
-            } else {
-                System.out.println("Invalid input. Please enter 'true' or 'false'.");
-            }
-        }
+        reader.nextLine();
 
         FurnitureCategory category = new FurnitureCategory(id, typeName, maxLoad, isOutdoor);
         store.addCategory(category);
         System.out.println("Category added successfully!");
-
     }
 
     private void viewFurniture() {
         System.out.print("Enter furniture ID: ");
         String id = reader.nextLine();
-        reader.nextLine();
 
         FurnitureBase furniture = store.getFurnitureByID(id);
         if (furniture != null) {
@@ -135,38 +121,30 @@ public class FurnitureStoreUI {
         } else {
             System.out.println("Furniture not found!");
         }
-
     }
 
     private void viewPurchaser() {
         System.out.print("Enter purchaser ID: ");
         String id = reader.nextLine();
-        reader.nextLine();
 
         Purchaser purchaser = store.getPurchaserByID(id);
         if (purchaser != null) {
-
-            System.out.println("Purchaser found!");
+            purchaser.displayDetails();
         } else {
             System.out.println("Purchaser not found!");
         }
-
     }
 
     private void viewCategory() {
         System.out.print("Enter category ID: ");
         String id = reader.nextLine();
-        reader.nextLine();
 
         FurnitureCategory category = store.getCategoryByID(id);
         if (category != null) {
-
-            System.out.println("Category found!");
+            category.displayDetails();
         } else {
             System.out.println("Category not found!");
         }
-       System.out.println();
-
     }
 
     public static void main(String[] args) {

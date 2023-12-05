@@ -46,6 +46,8 @@ abstract class FurnitureBase {
 
    public abstract double calculateDiscount();
 
+   public abstract String getFurnitureType();
+
    public String getFurnitureCategory() {
       return furnitureCategory;
    }

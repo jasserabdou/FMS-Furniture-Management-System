@@ -9,10 +9,10 @@ class SofaItem extends FurnitureBase {
         this.sofaMaterial = "Undefined";
     }
 
-    public SofaItem(String id ,String sofaMaterial, int itemCount, double price) {
+    public SofaItem(String id, String sofaMaterial, int itemCount, double price) {
         super(id, "Sofa", itemCount, price);
         this.sofaMaterial = sofaMaterial;
-        
+
     }
 
     // methods
@@ -32,4 +32,10 @@ class SofaItem extends FurnitureBase {
         System.out.println("Sofa Material: " + sofaMaterial);
         System.out.println("Discount: $" + calculateDiscount());
     }
+
+    @Override
+    public String getFurnitureType() {
+        return "sofa";
+    }
+
 }

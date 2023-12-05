@@ -24,12 +24,7 @@ class Purchaser {
 
     // Constructor
     public Purchaser(String id, String name, String furnitureType) {
-        this.id = id;
-        this.name = name;
-        this.furnitureType = furnitureType;
-        this.contactDetails = "";
-        this.purchaseDate = new Date();
-        this.purchaseHistory = new ArrayList<>();
+        this(id, name, furnitureType, "", new Date());
     }
 
     public Purchaser(String id, String name, String furnitureType, String contactDetails, Date purchaseDate) {
@@ -50,6 +45,10 @@ class Purchaser {
         return id;
     }
 
+    public String getFurnitureType() {
+        return furnitureType;
+    }
+
     public String getContactDetails() {
         return contactDetails;
     }
@@ -68,5 +67,17 @@ class Purchaser {
 
     public boolean isPurchaseValid(int thresholdValue) {
         return purchaseHistory.size() < thresholdValue;
+    }
+
+    public void displayDetails() {
+        System.out.println("Purchaser ID: " + id);
+        System.out.println("Purchaser Name: " + name);
+        System.out.println("Preferred Furniture Type: " + furnitureType);
+        System.out.println("Contact Details: " + contactDetails);
+        System.out.println("Purchase Date: " + purchaseDate);
+        System.out.println("Purchase History:");
+        for (String item : purchaseHistory) {
+            System.out.println("- " + item);
+        }
     }
 }

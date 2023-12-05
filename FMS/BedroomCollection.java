@@ -22,6 +22,11 @@ class BedroomCollection extends FurnitureBase {
     }
 
     @Override
+    public String getFurnitureType() {
+        return "bed";
+    }
+
+    @Override
     public void associatePurchaser(String buyer) {
         System.out.println("Bed purchased by: " + buyer);
     }

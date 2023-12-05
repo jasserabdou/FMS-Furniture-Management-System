@@ -26,6 +26,11 @@ class ChairItem extends FurnitureBase {
     }
 
     @Override
+    public String getFurnitureType() {
+        return "chair";
+    }
+
+    @Override
     public void displayDetails() {
         super.displayDetails();
         System.out.println("Chair Material: " + chairMaterial);
