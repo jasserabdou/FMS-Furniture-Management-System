@@ -43,6 +43,7 @@ public class FurnitureStoreUI {
             choice = getOption();
         }
         System.out.println("\nThank you for using Fortune Furnitures System.");
+        reader.close();
     }
 
     private int getOption() {
@@ -150,5 +151,6 @@ public class FurnitureStoreUI {
     public static void main(String[] args) {
         FurnitureStoreUI ui = new FurnitureStoreUI();
         ui.runUI();
+
     }
 }

@@ -1,4 +1,12 @@
+
 import java.util.*;
+
+/**
+ * The FurnitureBaseTester class is responsible for validating and demonstrating
+ * the functionality of the FurnitureBase class and its subclasses.
+ * It creates different FurnitureBase objects, calls their methods to ensure
+ * that the core furniture functionality is intact, and displays the results.
+ */
 
 public class FurnitureBaseTester {
     public static void main(String[] args) {

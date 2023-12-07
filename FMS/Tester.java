@@ -1,5 +1,14 @@
 import java.util.*;
 
+/**
+ * The Tester class is responsible for testing the functionality of the
+ * Furniture Management System (FMS).
+ * It allows users to interact with the system through a command-line interface,
+ * adding furniture items, purchasers,
+ * and furniture categories, as well as simulating interactions between
+ * purchasers, furniture, and furniture categories.
+ */
+
 public class Tester {
     private FurnitureStore homeFurnishingsDepot;
 

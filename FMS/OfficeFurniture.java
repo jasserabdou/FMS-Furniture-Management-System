@@ -61,7 +61,7 @@ public abstract class OfficeFurniture extends FurnitureBase {
 
     // Method to dynamically adjust the price based on specific attributes
     public void adjustPrice() {
-        // Ergonomic Design Adjustment
+
         if (isErgonomic) {
             price += price * 0.10; // 10% increase for ergonomic design
         }

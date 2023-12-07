@@ -75,6 +75,15 @@ public abstract class KidsSet extends FurnitureBase {
         } else {
             return "No mystery gift for this purchase";
         }
+
+    }
+
+    public void displayDetails() {
+        String gift = mysteryGift();
+        System.out.println("Kids Set ID: " + getKidsId());
+        System.out.println("Furniture Name: " + getFurName());
+        System.out.println("Price: $" + getPrice());
+        System.out.println("Mystery Gift: " + gift);
     }
 
 }
