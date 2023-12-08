@@ -11,7 +11,6 @@ public class MyKidsSetItems extends KidsSet {
 
     @Override
     public double calculateDiscount() {
-        
         return getPrice() * 0.1;
     }
 

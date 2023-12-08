@@ -35,7 +35,7 @@ class SofaItem extends FurnitureBase {
 
     @Override
     public String getFurnitureType() {
-        return "sofa";
+        return "Sofa";
     }
 
 }

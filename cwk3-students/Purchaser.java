@@ -1,4 +1,4 @@
-import java.util.*;
+
 
 /**
  * A Purchaser is a vital entity in the FurnitureStore system. Each Purchaser has an ID, 
@@ -79,5 +79,9 @@ class Purchaser {
         for (String item : purchaseHistory) {
             System.out.println("- " + item);
         }
+    }
+
+    public String getPreferredFurnitureType() {
+        return null;
     }
 }

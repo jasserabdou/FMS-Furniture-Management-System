@@ -1,4 +1,4 @@
-public class KidsSetTest {
+public class KidsSetTester {
 
     public static void main(String[] args) {
         // Test 1

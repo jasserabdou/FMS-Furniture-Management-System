@@ -21,60 +21,82 @@
 
 public abstract class OfficeFurniture extends FurnitureBase {
 
-    // attributes
+    private String furnitureCategory;
     private boolean isErgonomic;
     private String material;
     private double price;
 
-    // Constructors
     public OfficeFurniture() {
         super();
+        this.furnitureCategory = "";
         this.isErgonomic = false;
-        this.material = "Undefined";
+        this.material = "";
         this.price = 0.0;
     }
 
-    public OfficeFurniture(String id, String furnitureCategory, boolean isErgonomic, String material, int itemCount,
-            double price) {
-        super(id, furnitureCategory, itemCount, price);
-        this.isErgonomic = isErgonomic;
+    public OfficeFurniture(String category, boolean ergonomic, String material, double price) {
+        super();
+        this.furnitureCategory = category;
+        this.isErgonomic = ergonomic;
         this.material = material;
-        adjustPrice();
+        this.price = price;
+
     }
 
-    // methods
     public String getCategory() {
-        return getFurnitureCategory();
+        return furnitureCategory;
+    }
+
+    public void setCategory(String category) {
+        this.furnitureCategory = category;
     }
 
     public boolean isErgonomicFurniture() {
         return isErgonomic;
     }
 
+    public void setErgonomic(boolean ergonomic) {
+        this.isErgonomic = ergonomic;
+        adjustPrice();
+    }
+
     public String getMaterial() {
         return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+        adjustPrice();
     }
 
     public double getPrice() {
         return price;
     }
 
-    // Method to dynamically adjust the price based on specific attributes
-    public void adjustPrice() {
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
+    public void adjustPrice() {
         if (isErgonomic) {
-            price += price * 0.10; // 10% increase for ergonomic design
+            price += price * 0.1; // 10% increase for ergonomic furniture
         }
 
-        // Material-Based Adjustment
-        switch (material.toLowerCase()) {
-            case "wood":
-                price += price * 0.15; // 15% increase for wooden furniture
+        switch (material.toUpperCase()) {
+            case "WOOD":
+                price += price * 0.15; // 15% increase for wood furniture
                 break;
-            case "metal":
+            case "METAL":
                 price += price * 0.05; // 5% increase for metal furniture
                 break;
-
         }
+    }
+
+    public void displayDetails() {
+        System.out.println("Furniture Category: " + getCategory());
+        System.out.println("Ergonomic: " + isErgonomicFurniture());
+        System.out.println("Material: " + getMaterial());
+        System.out.printf("Price: $%.2f\n", price);
+        ;
     }
 }

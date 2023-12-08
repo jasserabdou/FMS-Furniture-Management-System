@@ -27,7 +27,7 @@ class ChairItem extends FurnitureBase {
 
     @Override
     public String getFurnitureType() {
-        return "chair";
+        return "Chair";
     }
 
     @Override

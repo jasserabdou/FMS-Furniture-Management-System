@@ -23,7 +23,7 @@ class BedroomCollection extends FurnitureBase {
 
     @Override
     public String getFurnitureType() {
-        return "bed";
+        return "Bed";
     }
 
     @Override
