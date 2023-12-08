@@ -16,7 +16,7 @@ To run the FMS project, follow these steps:
 
 ## Version or Date
 
-8/12/2023
+- 8/12/2023
 
 ## Authors
 
