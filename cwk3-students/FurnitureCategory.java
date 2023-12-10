@@ -11,7 +11,6 @@
  * discounts or special deals.
  */
 import java.util.ArrayList;
-import java.util.List;
 
 public class FurnitureCategory {
     // attributes
@@ -20,7 +19,7 @@ public class FurnitureCategory {
     private Double maximumLoad;
     private boolean isOutdoor;
     private Purchaser recentPurchaser;
-    private List<String> materials;
+    private ArrayList<String> materials;
 
     // Constructor
     public FurnitureCategory(String id, String typeName, Double maximumLoad, boolean isOutdoor) {

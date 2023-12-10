@@ -1,153 +1,180 @@
-import java.util.*;
-
-/**
- * The Tester class is responsible for testing the functionality of the
- * Furniture Management System (FMS).
- * It allows users to interact with the system through a command-line interface,
- * adding furniture items, purchasers,
- * and furniture categories, as well as simulating interactions between
- * purchasers, furniture, and furniture categories.
- */
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 
 public class Tester {
-    private FurnitureStore homeFurnishingsDepot;
+    private Scanner scanner;
 
     public Tester() {
-        homeFurnishingsDepot = new FurnitureStore("Home Furnishings Depot", "Downtown");
+        new FurnitureStore("Furniture Management System", "Downtown");
+        scanner = new Scanner(System.in);
     }
 
     // The doTest() method where you will write code to test your system
     public void doTest() {
-        Scanner enter = new Scanner(System.in);
+        // Asking the user to enter the number of furniture items
+        System.out.println("Welcome to the Furniture Management System!");
+        System.out.println("Please enter the number of furniture items:");
+        int numFurniture = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
 
-        // Test 1: Add furniture items
-        System.out.println("1: Adding furniture items");
-        addFurnitureFromUserInput();
+        // Creating an array of furniture items
+        FurnitureBase[] furnitureItems = new FurnitureBase[numFurniture];
 
-        // Test 2: Add a purchaser
-        System.out.println("\n2: Adding a purchaser");
-        addPurchaserFromUserInput();
+        // Looping through the array and asking the user to enter the details of each
+        // furniture item
+        for (int i = 0; i < numFurniture; i++) {
+            System.out.println("Please enter the details of furniture item " + (i + 1) + ":");
+            System.out.println("Enter the type of furniture (Sofa, Bed, Chair, Table, or Wardrobe):");
+            String type = scanner.nextLine();
+            System.out.println("Enter the ID of the furniture:");
+            String id = scanner.nextLine();
+            System.out.println("Enter the name of the furniture:");
+            String name = scanner.nextLine();
+            System.out.println("Enter the quantity of the furniture:");
+            int quantity = scanner.nextInt();
+            System.out.println("Enter the price of the furniture:");
+            double price = scanner.nextDouble();
+            scanner.nextLine(); // consume the newline character
 
-        // Test 3: Add a furniture category
-        System.out.println("\n3: Adding a furniture category");
-        addCategoryFromUserInput();
+            // Creating a furniture item based on the type and adding it to the array
+            switch (type) {
+                case "Sofa":
+                    furnitureItems[i] = new SofaItem(id, name, quantity, price);
+                    break;
+                case "Bed":
+                    furnitureItems[i] = new BedroomCollection(id, name, quantity, price);
+                    break;
+                case "Chair":
+                    furnitureItems[i] = new ChairItem(id, name, quantity, price);
+                    break;
+                case "Table":
+                    furnitureItems[i] = new TableItem(id, name, quantity, price);
+                    break;
+                case "Wardrobe":
+                    furnitureItems[i] = new WardrobeItem(id, name, quantity, price);
+                    break;
+                default:
+                    System.out.println("Invalid type. Please try again.");
+                    i--; // decrement the index to repeat the iteration
+            }
+        }
 
-        // Test 4: Simulate interactions between purchaser, furniture, and furniture
-        simulateInteractions(enter);
+        // Asking the user to enter the number of purchasers
+        System.out.println("Please enter the number of purchasers:");
+        int numPurchasers = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
 
-        enter.close();
-    }
+        // Creating an array of purchasers
+        Purchaser[] purchasers = new Purchaser[numPurchasers];
 
-    private void simulateInteractions(Scanner input) {
-        System.out.println("\nWelcome to the FMS (Furniture Management System)");
+        // Looping through the array and asking the user to enter the details of each
+        // purchaser
+        for (int i = 0; i < numPurchasers; i++) {
+            System.out.println("Please enter the details of purchaser " + (i + 1) + ":");
+            System.out.println("Enter the ID of the purchaser:");
+            String id = scanner.nextLine();
+            System.out.println("Enter the name of the purchaser:");
+            String name = scanner.nextLine();
+            System.out.println("Enter the address of the purchaser:");
+            String address = scanner.nextLine();
+            System.out.println("Enter the contact details of the purchaser:");
+            String contactDetails = scanner.nextLine();
+            System.out.println("Enter the date of purchase (dd/mm/yyyy):");
+            String date = scanner.nextLine();
 
-        System.out.print("Enter the ID of the purchaser to simulate interactions: ");
-        String purchaserId = input.nextLine();
-        Purchaser purchaser = homeFurnishingsDepot.getPurchaserByID(purchaserId);
-
-        if (purchaser != null) {
-
-            FurnitureBase furnitureItem = homeFurnishingsDepot.getFurnitureByID(purchaserId);
-            FurnitureCategory category = homeFurnishingsDepot.getCategoryByID(purchaserId);
-
-            System.out.println("\nInteraction Details:");
-
-            System.out.println("Purchaser Details:");
-            purchaser.displayDetails();
-
-            if (furnitureItem != null) {
-                System.out.println("\nFurniture Item Details:");
-                furnitureItem.displayDetails();
-            } else {
-                System.out.println("\nFurniture Item not found.");
+            // Creating a date object from the string
+            Date dateOfPurchase = null;
+            try {
+                dateOfPurchase = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
 
-            if (category != null) {
+            // Creating a purchaser object and adding it to the array
+            purchasers[i] = new Purchaser(id, name, address, contactDetails, dateOfPurchase);
+        }
 
-                category.setRecentPurchaser(purchaser);
+        // Asking the user to enter the number of orders
+        System.out.println("Please enter the number of orders:");
+        int numOrders = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
 
-                System.out.println("\nFurniture Category Details:");
-                category.displayDetails();
-            } else {
-                System.out.println("\nFurniture Category not found.");
+        // Creating an array of orders
+        Order[] orders = new Order[numOrders];
+
+        // Looping through the array and asking the user to enter the details of each
+        // order
+        for (int i = 0; i < numOrders; i++) {
+            System.out.println("Please enter the details of order " + (i + 1) + ":");
+            System.out.println("Enter the ID of the order:");
+            String id = scanner.nextLine();
+            System.out.println("Enter the ID of the furniture item:");
+            String furnitureId = scanner.nextLine();
+            System.out.println("Enter the ID of the purchaser:");
+            String purchaserId = scanner.nextLine();
+            System.out.println("Enter the quantity of the order:");
+            int quantity = scanner.nextInt();
+            scanner.nextLine(); // consume the newline character
+
+            // Finding the furniture item and the purchaser from the arrays using the IDs
+            FurnitureBase furnitureItem = null;
+            Purchaser purchaser = null;
+            for (int j = 0; j < numFurniture; j++) {
+                if (furnitureItems[j].getID().equals(furnitureId)) {
+                    furnitureItem = furnitureItems[j];
+                    break;
+                }
             }
-        } else {
-            System.out.println("Purchaser not found.");
-        }
-    }
+            for (int j = 0; j < numPurchasers; j++) {
+                if (purchasers[j].getID().equals(purchaserId)) {
+                    purchaser = purchasers[j];
+                    break;
+                }
+            }
 
-    private void addFurnitureFromUserInput() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter furniture ID: ");
-        String id = input.nextLine();
-        System.out.print("Enter furniture material: ");
-        String material = input.nextLine();
-        System.out.print("Enter quantity: ");
-        int quantity = input.nextInt();
-        System.out.print("Enter price: ");
-        double price = input.nextDouble();
-
-        System.out.print("Enter furniture type (bed, sofa, chair): ");
-        String furnitureType = input.next();
-
-        FurnitureBase furnitureItem;
-
-        if ("bed".equalsIgnoreCase(furnitureType)) {
-            furnitureItem = new BedroomCollection(id, material, quantity, price);
-        } else if ("sofa".equalsIgnoreCase(furnitureType)) {
-            furnitureItem = new SofaItem(id, material, quantity, price);
-        } else if ("chair".equalsIgnoreCase(furnitureType)) {
-            furnitureItem = new ChairItem(id, material, quantity, price);
-        } else {
-            System.out.println("Invalid furniture type.");
-            return;
+            // Creating an order object and adding it to the array
+            orders[i] = new Order(id, furnitureItem, purchaser, quantity);
         }
 
-        homeFurnishingsDepot.addFurniture(furnitureItem);
-        System.out.println("Furniture item added successfully.");
-
-        Purchaser purchaser = homeFurnishingsDepot.getPurchaserByPreferredType(furnitureItem.getFurnitureType());
-        if (purchaser != null) {
-            purchaser.addToPurchaseHistory(furnitureType + " purchased by: " + purchaser.getName());
+        // Asking the user what they want to see
+        System.out.println("Please enter one of the following options:");
+        System.out.println("1. All Furniture Details");
+        System.out.println("2. All Purchaser Details");
+        System.out.println("3. All Orders Details");
+        System.out.println("4. Exit");
+        int option = scanner.nextInt();
+        while (option != 4) {
+            switch (option) {
+                case 1:
+                    // Displaying details FurnitureBase
+                    System.out.println("\nAll Furniture Details:");
+                    for (int i = 0; i < numFurniture; i++) {
+                        furnitureItems[i].displayDetails();
+                    }
+                    break;
+                case 2:
+                    // Displaying details Purchaser
+                    System.out.println("\nAll Purchaser Details:");
+                    for (int i = 0; i < numPurchasers; i++) {
+                        purchasers[i].displayDetails();
+                    }
+                    break;
+                case 3:
+                    // Displaying details Orders
+                    System.out.println("\nAll Orders Details:");
+                    for (int i = 0; i < numOrders; i++) {
+                        orders[i].displayDetails();
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+            System.out.println("Please enter another option or 4 to exit:");
+            option = scanner.nextInt();
         }
-    }
-
-    private void addPurchaserFromUserInput() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter purchaser ID: ");
-        String id = input.nextLine();
-        System.out.print("Enter purchaser name: ");
-        String name = input.nextLine();
-        System.out.print("Enter preferred furniture type: ");
-        String preferredFurnitureType = input.nextLine();
-        System.out.print("Enter contact details: ");
-        String contactDetails = input.nextLine();
-
-        Purchaser purchaser = new Purchaser(id, name, preferredFurnitureType);
-        purchaser.setContactDetails(contactDetails);
-        homeFurnishingsDepot.addPurchaser(purchaser);
-
-        FurnitureBase furnitureItem = homeFurnishingsDepot.getFurnitureByType(preferredFurnitureType);
-        if (furnitureItem != null) {
-            purchaser.addToPurchaseHistory(furnitureItem.getID() + " purchased by: " + purchaser.getName());
-        }
-
-        System.out.println("Purchaser added successfully.");
-    }
-
-    private void addCategoryFromUserInput() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter category ID: ");
-        String id = input.nextLine();
-        System.out.print("Enter category name: ");
-        String name = input.nextLine();
-        System.out.print("Enter Max Load: ");
-        double maximumLoad = input.nextDouble();
-        System.out.print("Is Is Outdoor ? (true/false): ");
-        boolean isOutdoor = input.nextBoolean();
-
-        homeFurnishingsDepot.addCategory(new FurnitureCategory(id, name, maximumLoad, isOutdoor));
-        System.out.println("Furniture category added successfully.");
+        System.out.println("Thank you for using the Furniture Management System!");
     }
 
     // Main method to make the class executable

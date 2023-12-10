@@ -12,7 +12,7 @@
  */
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 abstract class FurnitureBase {
    // attributes
@@ -20,7 +20,7 @@ abstract class FurnitureBase {
    private String furnitureCategory;
    private int itemCount;
    private double price;
-   private static List<FurnitureBase> furnitureInventory = new ArrayList<>();
+   private static ArrayList<FurnitureBase> furnitureInventory = new ArrayList<>();
 
    // constructor
    public FurnitureBase() {
@@ -57,7 +57,7 @@ abstract class FurnitureBase {
    }
 
    public void displayDetails() {
-      System.out.println("Furniture ID: " + id);
+      System.out.println("\nFurniture ID: " + id);
       System.out.println("Furniture Category: " + furnitureCategory);
       System.out.println("Item Count: " + itemCount);
       System.out.println("Price: $" + price);
@@ -68,7 +68,6 @@ abstract class FurnitureBase {
    public static void showAllFurnitureDetails() {
       for (FurnitureBase furniture : furnitureInventory) {
          furniture.displayDetails();
-         System.out.println("-----------------------------");
       }
    }
 
@@ -81,4 +80,6 @@ abstract class FurnitureBase {
       return "Furniture ID: " + id + "\nFurniture Category: " + furnitureCategory +
             "\nItem Count: " + itemCount + "\nPrice: $" + price;
    }
+
+
 }

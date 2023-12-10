@@ -85,7 +85,7 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
 
     }
 
-    private void loadOrders() {
+    void loadOrders() {
         // Logic to populate customerOrders
         // This may involve instantiating new FurnitureCategory objects and adding them
         // to the list.
@@ -113,25 +113,15 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
         return getPurchaserByID(id);
     }
 
-    private FurnitureCategory retrieveCategory(String id) {
+    FurnitureCategory retrieveCategory(String id) {
         return getCategoryByID(id);
     }
 
-    public Purchaser getPurchaserByPreferredType(String preferredFurnitureType) {
-        for (Purchaser purchaser : customerOrders) {
-            if (purchaser.getFurnitureType().equalsIgnoreCase(preferredFurnitureType)) {
-                return purchaser;
-            }
-        }
+    public FurnitureBase[] getFurnitureInventory() {
         return null;
     }
 
-    public FurnitureBase getFurnitureByType(String preferredFurnitureType) {
-        for (FurnitureBase furniture : furnitureItems) {
-            if (furniture.getFurnitureCategory().equalsIgnoreCase(preferredFurnitureType)) {
-                return furniture;
-            }
-        }
+    public Purchaser[] getPurchaserList() {
         return null;
     }
 

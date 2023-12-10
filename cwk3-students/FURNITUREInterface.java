@@ -1,6 +1,7 @@
 
 /**
- * This interface provides a blueprint for basic operations on furniture, purchasers, 
+ * This interface provides a blueprint for basic operations on furniture,
+ * purchasers,
  * and furniture categories within a furniture management system.
  */
 public interface FURNITUREInterface {
