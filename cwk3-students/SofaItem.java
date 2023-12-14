@@ -1,8 +1,14 @@
-class SofaItem extends FurnitureBase {
-    // attributes
+/**
+ * SofaItem represents a type of furniture item within the FurnitureStore
+ * system.
+ * It extends the FurnitureBase class and adds specific attributes and behaviors
+ * for sofas.
+ */
+public class SofaItem extends FurnitureBase {
+    // Attributes
     private String sofaMaterial;
 
-    // constructor
+    // Constructor
     public SofaItem() {
         super();
         this.setFurnitureCategory("Sofa");
@@ -12,10 +18,9 @@ class SofaItem extends FurnitureBase {
     public SofaItem(String id, String sofaMaterial, int itemCount, double price) {
         super(id, "Sofa", itemCount, price);
         this.sofaMaterial = sofaMaterial;
-
     }
 
-    // methods
+    // Methods
     @Override
     public double calculateDiscount() {
         return getPrice() * 0.1;
@@ -37,5 +42,4 @@ class SofaItem extends FurnitureBase {
     public String getFurnitureType() {
         return "Sofa";
     }
-
 }

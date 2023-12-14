@@ -1,17 +1,26 @@
 import java.util.*;
+
 /**
- * Write a description of class FurnitureStoreUI here.
+ * The FurnitureStoreUI class represents the user interface for interacting with
+ * the FurnitureStore system.
+ * It provides options to add furniture, purchasers, and categories, as well as
+ * view details for furniture,
+ * purchasers, and categories. The UI is designed to interact with the
+ * FurnitureStore class and various
+ * FurnitureBase subclasses to manage the store's inventory and customer
+ * information.
  * 
- * @author (your name)
- * @version (a version number or a date)
+ * The UI presents a menu with different options and takes user input to perform
+ * the desired actions.
  */
-
-import java.util.Scanner;
-
 public class FurnitureStoreUI {
     private Scanner reader = new Scanner(System.in);
     private FurnitureStore store = new FurnitureStore("Home Furnishings Depot", "Downtown");
 
+    /**
+     * Runs the main user interface loop, allowing users to interact with the
+     * FurnitureStore system.
+     */
     public void runUI() {
         int choice = getOption();
 
@@ -45,6 +54,11 @@ public class FurnitureStoreUI {
         reader.close();
     }
 
+    /**
+     * Displays the main menu and retrieves the user's choice.
+     * 
+     * @return The user's choice as an integer.
+     */
     private int getOption() {
         System.out.println("\nWhat would you like to do?");
         System.out.println("0. Quit");
@@ -57,10 +71,13 @@ public class FurnitureStoreUI {
         System.out.print("Enter your choice: ");
 
         int option = reader.nextInt();
-        reader.nextLine();
+        reader.nextLine(); // Consume the newline character
         return option;
     }
 
+    /**
+     * Adds a new furniture item to the store's inventory based on user input.
+     */
     private void addFurniture() {
         System.out.print("Enter furniture ID: ");
         String id = reader.nextLine();
@@ -80,6 +97,9 @@ public class FurnitureStoreUI {
         System.out.println("Furniture added successfully!");
     }
 
+    /**
+     * Adds a new purchaser to the store's customer database based on user input.
+     */
     private void addPurchaser() {
         System.out.print("Enter purchaser ID: ");
         String id = reader.nextLine();
@@ -95,6 +115,9 @@ public class FurnitureStoreUI {
         System.out.println("Purchaser added successfully!");
     }
 
+    /**
+     * Adds a new furniture category to the store based on user input.
+     */
     private void addCategory() {
         System.out.print("Enter ID Number: ");
         String id = reader.nextLine();
@@ -104,13 +127,16 @@ public class FurnitureStoreUI {
         double maxLoad = reader.nextDouble();
         System.out.print("Is outdoor (true/false): ");
         boolean isOutdoor = reader.nextBoolean();
-        reader.nextLine();
+        reader.nextLine(); // Consume the newline character
 
         FurnitureCategory category = new FurnitureCategory(id, typeName, maxLoad, isOutdoor);
         store.addCategory(category);
         System.out.println("Category added successfully!");
     }
 
+    /**
+     * Displays details for a specific furniture item based on user input.
+     */
     private void viewFurniture() {
         System.out.print("Enter furniture ID: ");
         String id = reader.nextLine();
@@ -123,6 +149,9 @@ public class FurnitureStoreUI {
         }
     }
 
+    /**
+     * Displays details for a specific purchaser based on user input.
+     */
     private void viewPurchaser() {
         System.out.print("Enter purchaser ID: ");
         String id = reader.nextLine();
@@ -135,6 +164,9 @@ public class FurnitureStoreUI {
         }
     }
 
+    /**
+     * Displays details for a specific furniture category based on user input.
+     */
     private void viewCategory() {
         System.out.print("Enter category ID: ");
         String id = reader.nextLine();
@@ -147,9 +179,13 @@ public class FurnitureStoreUI {
         }
     }
 
+    /**
+     * The main method to run the FurnitureStoreUI.
+     * 
+     * @param args The command line arguments (not used).
+     */
     public static void main(String[] args) {
         FurnitureStoreUI ui = new FurnitureStoreUI();
         ui.runUI();
-
     }
 }

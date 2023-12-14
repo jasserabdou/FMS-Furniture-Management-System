@@ -1,3 +1,9 @@
+/**
+ * WardrobeItem represents a type of furniture item within the FurnitureStore
+ * system.
+ * It extends the FurnitureBase class and adds specific attributes and behaviors
+ * for wardrobes.
+ */
 public class WardrobeItem extends FurnitureBase {
     // attributes
     private String wardrobeMaterial;
@@ -17,7 +23,6 @@ public class WardrobeItem extends FurnitureBase {
     // methods
     @Override
     public double calculateDiscount() {
-        // You can customize the discount calculation for wardrobes if needed
         return getPrice() * 0.1;
     }
 

@@ -26,58 +26,80 @@
 
 public abstract class KidsSet extends FurnitureBase {
 
-    // attributes
+    // Attributes
     private String kidsId;
     private String furName;
+    private double price;
 
     // Constructors
-    public KidsSet() {
-        super();
-        this.kidsId = "Undefined";
-        this.furName = "Undefined";
-    }
-
     public KidsSet(String id, String furnitureCategory, int itemCount, double price, String kidsId, String furName) {
         super(id, furnitureCategory, itemCount, price);
         this.kidsId = kidsId;
         this.furName = furName;
+        this.price = price;
     }
 
-    // methods
+    // Methods
+
+    public KidsSet() {
+    }
+
+    /**
+     * Gets the identifier for the KidsSet.
+     *
+     * @return The identifier for the KidsSet.
+     */
     public String getKidsId() {
         return kidsId;
     }
 
+    /**
+     * Gets the name of the furniture in the KidsSet.
+     *
+     * @return The name of the furniture in the KidsSet.
+     */
     public String getFurName() {
         return furName;
     }
 
+    /**
+     * Gets the price of the KidsSet.
+     *
+     * @return The price of the KidsSet.
+     */
     @Override
     public double getPrice() {
-        return super.getPrice();
+        return price;
     }
 
-    // Method to show the price of the KidsSet
+    /**
+     * Displays the price of the KidsSet.
+     */
     public void showPrice() {
         System.out.println("Price for " + furName + " set: $" + getPrice());
     }
 
-    // Method for mystery gift based on the purchase price
+    /**
+     * Provides surprise gifts based on the price of the KidsSet.
+     *
+     * @return The mystery gift corresponding to the purchase price.
+     */
     public String mysteryGift() {
-        double purchasePrice = getPrice();
-
-        if (purchasePrice > 500) {
+        if (price > 500) {
             return "Luxury Office Chair";
-        } else if (purchasePrice >= 300 && purchasePrice <= 500) {
+        } else if (price >= 300 && price <= 500) {
             return "Desk Organizer Set";
-        } else if (purchasePrice >= 200 && purchasePrice < 300) {
+        } else if (price >= 200 && price < 300) {
             return "Free Lamp";
         } else {
             return "No mystery gift for this purchase";
         }
-
     }
 
+    /**
+     * Displays detailed information about the KidsSet, including Kids Set ID,
+     * furniture name, price, and mystery gift.
+     */
     public void displayDetails() {
         String gift = mysteryGift();
         System.out.println("Kids Set ID: " + getKidsId());
@@ -85,5 +107,4 @@ public abstract class KidsSet extends FurnitureBase {
         System.out.println("Price: $" + getPrice());
         System.out.println("Mystery Gift: " + gift);
     }
-
 }

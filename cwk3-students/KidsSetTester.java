@@ -1,8 +1,18 @@
+/**
+ * KidsSetTester is a class for testing the functionality of the KidsSet and
+ * MyKidsSetItems classes.
+ */
 public class KidsSetTester {
 
+    /**
+     * The main method for running tests on the KidsSet and MyKidsSetItems classes.
+     * 
+     * @param args Command-line arguments (not used in this context).
+     */
     public static void main(String[] args) {
         // Test 1
-        KidsSet defaultKidsSet = new MyKidsSetItems("SET001", "Kid's Furniture", 1, 199.99, "DinosaurAdventure", "Dino Desk");
+        KidsSet defaultKidsSet = new MyKidsSetItems("SET001", "Kid's Furniture", 1, 199.99, "DinosaurAdventure",
+                "Dino Desk");
         System.out.println("Test 1:");
         defaultKidsSet.displayDetails();
 
@@ -16,7 +26,8 @@ public class KidsSetTester {
         System.out.println("Mystery Gift: " + gift);
 
         // Test 4
-        KidsSet highPriceKidsSet = new MyKidsSetItems("SET002", "Kid's Furniture", 1, 600.0, "SpaceExplorer", "Rocket Chair");
+        KidsSet highPriceKidsSet = new MyKidsSetItems("SET002", "Kid's Furniture", 1, 600.0, "SpaceExplorer",
+                "Rocket Chair");
         System.out.println("\nTest 4: Another Mystery Gift Test");
         highPriceKidsSet.displayDetails();
 

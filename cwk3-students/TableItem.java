@@ -1,8 +1,14 @@
+/**
+ * TableItem represents a type of furniture item within the FurnitureStore
+ * system.
+ * It extends the FurnitureBase class and adds specific attributes and behaviors
+ * for tables.
+ */
 public class TableItem extends FurnitureBase {
-    // attributes
+    // Attributes
     private String tableMaterial;
 
-    // constructor
+    // Constructor
     public TableItem() {
         super();
         this.setFurnitureCategory("Table");
@@ -14,10 +20,9 @@ public class TableItem extends FurnitureBase {
         this.tableMaterial = tableMaterial;
     }
 
-    // methods
+    // Methods
     @Override
     public double calculateDiscount() {
-        // You can customize the discount calculation for tables if needed
         return getPrice() * 0.1;
     }
 

@@ -11,22 +11,38 @@ import java.util.*;
  */
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 class Purchaser {
     // attributes
-    private String id;
-    private String name;
-    private String furnitureType;
-    private String contactDetails;
-    private Date purchaseDate;
-    private List<String> purchaseHistory;
+    private String id; // Unique identifier for the purchaser
+    private String name; // Name of the purchaser
+    private String furnitureType; // Preferred furniture type of the purchaser
+    private String contactDetails; // Contact details of the purchaser (e.g., phone number, email, address)
+    private Date purchaseDate; // Date of the most recent purchase made by the purchaser
+    private ArrayList<String> purchaseHistory; // List of items purchased by the purchaser
 
     // Constructor
+    /**
+     * Constructs a new Purchaser with the given parameters.
+     * 
+     * @param id            The unique identifier for the purchaser.
+     * @param name          The name of the purchaser.
+     * @param furnitureType The preferred furniture type of the purchaser.
+     */
     public Purchaser(String id, String name, String furnitureType) {
         this(id, name, furnitureType, "", new Date());
     }
 
+    /**
+     * Constructs a new Purchaser with the given parameters.
+     * 
+     * @param id             The unique identifier for the purchaser.
+     * @param name           The name of the purchaser.
+     * @param furnitureType  The preferred furniture type of the purchaser.
+     * @param contactDetails The contact details of the purchaser.
+     * @param purchaseDate   The date of the most recent purchase made by the
+     *                       purchaser.
+     */
     public Purchaser(String id, String name, String furnitureType, String contactDetails, Date purchaseDate) {
         this.id = id;
         this.name = name;
@@ -37,38 +53,85 @@ class Purchaser {
     }
 
     // methods
+    /**
+     * Gets the name of the purchaser.
+     * 
+     * @return The name of the purchaser.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the unique identifier of the purchaser.
+     * 
+     * @return The unique identifier of the purchaser.
+     */
     public String getID() {
         return id;
     }
 
+    /**
+     * Gets the preferred furniture type of the purchaser.
+     * 
+     * @return The preferred furniture type of the purchaser.
+     */
     public String getFurnitureType() {
         return furnitureType;
     }
 
+    /**
+     * Gets the contact details of the purchaser.
+     * 
+     * @return The contact details of the purchaser.
+     */
     public String getContactDetails() {
         return contactDetails;
     }
 
+    /**
+     * Sets the contact details of the purchaser.
+     * 
+     * @param contact The contact details to be set.
+     */
     public void setContactDetails(String contact) {
         this.contactDetails = contact;
     }
 
+    /**
+     * Adds an item to the purchase history of the purchaser.
+     * 
+     * @param item The item to be added to the purchase history.
+     */
     public void addToPurchaseHistory(String item) {
         purchaseHistory.add(item);
     }
 
+    /**
+     * Gets the purchase history of the purchaser.
+     * 
+     * @return The purchase history of the purchaser.
+     */
     public List<String> getPurchaseHistory() {
         return purchaseHistory;
     }
 
+    /**
+     * Checks if the number of purchases made by the purchaser is below a specified
+     * threshold.
+     * 
+     * @param thresholdValue The threshold value for the number of purchases.
+     * @return True if the number of purchases is below the threshold; false
+     *         otherwise.
+     */
     public boolean isPurchaseValid(int thresholdValue) {
         return purchaseHistory.size() < thresholdValue;
     }
 
+    /**
+     * Displays detailed information about the purchaser, including purchase details
+     * and history.
+     */
     public void displayDetails() {
         System.out.println("\nPurchaser ID: " + id);
         System.out.println("Purchaser Name: " + name);
@@ -77,6 +140,8 @@ class Purchaser {
         System.out.println("Purchase Date: " + purchaseDate);
         System.out.println("Purchase History:");
 
+        for (String item : purchaseHistory) {
+            System.out.println("- " + item);
+        }
     }
-
 }

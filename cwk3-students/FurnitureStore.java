@@ -3,16 +3,24 @@ import java.util.*;
 /**
  * This class implements the FIRE FURNITUREInterface interface
  **/
-public class FurnitureStore implements FURNITUREInterface // do not change this header
+public class FurnitureStore implements FURNITUREInterface {
 
-{
-    private String storeName;
-    private String location;
-    private List<FurnitureBase> furnitureItems;
-    private List<Purchaser> customerOrders;
-    private List<FurnitureCategory> suppliers;
+    // Attributes
+    private String storeName; // Name of the furniture store
+    private String location; // Location of the furniture store
+    private List<FurnitureBase> furnitureItems; // List of furniture items in the store
+    private List<Purchaser> customerOrders; // List of customer orders
+    private List<FurnitureCategory> suppliers; // List of furniture suppliers
 
     // Constructor
+    /**
+     * Constructs a new FurnitureStore with the given storeName and location.
+     * Initializes lists for furnitureItems, customerOrders, and suppliers.
+     * Calls methods to load initial data.
+     * 
+     * @param storeName The name of the furniture store.
+     * @param location  The location of the furniture store.
+     */
     public FurnitureStore(String storeName, String location) {
         this.storeName = storeName;
         this.location = location;
@@ -30,19 +38,16 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
     @Override
     public void addFurniture(FurnitureBase furniture) {
         furnitureItems.add(furniture);
-
     }
 
     @Override
     public void addPurchaser(Purchaser purchaser) {
         customerOrders.add(purchaser);
-
     }
 
     @Override
     public void addCategory(FurnitureCategory category) {
         suppliers.add(category);
-
     }
 
     @Override
@@ -62,7 +67,6 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
                 return purchaser;
             }
         }
-
         return null;
     }
 
@@ -73,31 +77,39 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
                 return category;
             }
         }
-
         return null;
     }
 
     // Private methods as specified
+    /**
+     * Loads initial data for furnitureItems and suppliers.
+     * This may involve instantiating new FurnitureBase and Purchaser objects
+     * and adding them to the respective lists.
+     */
     private void loadFurnitureAndSuppliers() {
         // Logic to populate furnitureItems and suppliers
-        // This may involve instantiating new FurnitureBase and Purchaser objects and
-        // adding them to the respective lists.
-
+        // This may involve instantiating new FurnitureBase and Purchaser objects
+        // and adding them to the respective lists.
     }
 
-    void loadOrders() {
+    /**
+     * Loads initial data for customerOrders.
+     * This may involve instantiating new FurnitureCategory objects
+     * and adding them to the list.
+     */
+    private void loadOrders() {
         // Logic to populate customerOrders
-        // This may involve instantiating new FurnitureCategory objects and adding them
-        // to the list.
-
+        // This may involve instantiating new FurnitureCategory objects
+        // and adding them to the list.
     }
 
+    /**
+     * Links specific customer orders to their corresponding furniture pieces.
+     * This may involve updating the furniture items with the purchaser information.
+     * For the sake of this example, I'm linking the first customer order with the
+     * first furniture item.
+     */
     private void linkOrdersToFurniture() {
-        // Logic to link specific customer orders to their corresponding furniture
-        // pieces
-        // This may involve updating the furniture items with the purchaser information.
-        // For the sake of this example, I'm linking the first customer order with the
-        // first furniture item.
         if (!customerOrders.isEmpty() && !furnitureItems.isEmpty()) {
             customerOrders.get(0).addToPurchaseHistory(furnitureItems.get(0).getID());
             furnitureItems.get(0).associatePurchaser(customerOrders.get(0).getName());
@@ -105,24 +117,52 @@ public class FurnitureStore implements FURNITUREInterface // do not change this 
     }
 
     // Additional helper methods (optional)
+    /**
+     * Retrieves a FurnitureBase object based on the provided ID.
+     * 
+     * @param id The ID of the furniture.
+     * @return The retrieved FurnitureBase object.
+     */
     private FurnitureBase retrieveFurniture(String id) {
         return getFurnitureByID(id);
     }
 
+    /**
+     * Retrieves a Purchaser object based on the provided ID.
+     * 
+     * @param id The ID of the purchaser.
+     * @return The retrieved Purchaser object.
+     */
     private Purchaser retrievePurchaser(String id) {
         return getPurchaserByID(id);
     }
 
+    /**
+     * Retrieves a FurnitureCategory object based on the provided ID.
+     * 
+     * @param id The ID of the furniture category.
+     * @return The retrieved FurnitureCategory object.
+     */
     FurnitureCategory retrieveCategory(String id) {
         return getCategoryByID(id);
     }
 
+    /**
+     * Gets an array of all furniture items in the store's inventory.
+     * 
+     * @return An array of FurnitureBase objects representing the furniture
+     *         inventory.
+     */
     public FurnitureBase[] getFurnitureInventory() {
-        return null;
+        return null; // Placeholder, implementation required.
     }
 
+    /**
+     * Gets an array of all purchasers in the store.
+     * 
+     * @return An array of Purchaser objects representing the purchaser list.
+     */
     public Purchaser[] getPurchaserList() {
-        return null;
+        return null; // Placeholder, implementation required.
     }
-
 }

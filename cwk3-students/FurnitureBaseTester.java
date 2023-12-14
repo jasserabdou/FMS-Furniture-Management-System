@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 /**
  * The FurnitureBaseTester class is responsible for validating and demonstrating
  * the functionality of the FurnitureBase class and its subclasses.

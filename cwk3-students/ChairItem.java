@@ -1,5 +1,12 @@
+/**
+ * ChairItem represents a type of furniture item within the FurnitureStore
+ * system.
+ * It extends the FurnitureBase class and adds specific attributes and behaviors
+ * for chairs.
+ */
+
 class ChairItem extends FurnitureBase {
-    // attributes
+    // Attributes
     private String chairMaterial;
 
     // Constructor
@@ -10,11 +17,11 @@ class ChairItem extends FurnitureBase {
     }
 
     public ChairItem(String id, String chairMaterial, int itemCount, double price) {
-        super(id ,"Chair", itemCount, price);
+        super(id, "Chair", itemCount, price);
         this.chairMaterial = chairMaterial;
     }
 
-    // methods
+    // Methods
     @Override
     public double calculateDiscount() {
         return getPrice() * 0.12;

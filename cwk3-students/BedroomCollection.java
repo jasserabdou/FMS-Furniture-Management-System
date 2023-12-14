@@ -1,8 +1,15 @@
-class BedroomCollection extends FurnitureBase {
-    // attributes
+/**
+ * BedroomCollection represents a type of furniture item within the
+ * FurnitureStore system,
+ * specifically tailored for bedrooms. It extends the FurnitureBase class and
+ * adds attributes
+ * and behaviors related to beds.
+ */
+public class BedroomCollection extends FurnitureBase {
+    // Attributes
     private String bedSize;
 
-    // constructor
+    // Constructor
     public BedroomCollection() {
         super();
         this.setFurnitureCategory("Bed");
@@ -14,10 +21,9 @@ class BedroomCollection extends FurnitureBase {
         this.bedSize = bedSize;
     }
 
-    // methods
+    // Methods
     @Override
     public double calculateDiscount() {
-
         return getPrice() * 0.15;
     }
 
