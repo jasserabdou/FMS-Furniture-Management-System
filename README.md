@@ -29,6 +29,6 @@ To run the FMS project, follow these steps:
 
 - **Jasser Abdelftattah**
 
-## Furniture Management System UML Diagram Design
+## Furniture Management System (FMS) UML Diagram Design
 
-![FMS UML Diagram](docs/(FMS) UML-diagram Desgin.png)
+<img src="docs/(FMS) UML-diagram Desgin.png" alt="FMS UML Diagram"/>
