@@ -31,4 +31,4 @@ To run the FMS project, follow these steps:
 
 ## Furniture Management System UML Diagram Design
 
-![FMS UML Diagram](docs/(FMS) UML-diagram Desgin.png)
+!FMS UML Diagram (docs/(FMS) UML-diagram Desgin.png)
