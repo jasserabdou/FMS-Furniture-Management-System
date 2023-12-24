@@ -9,7 +9,7 @@ public class BedroomCollection extends FurnitureBase {
     // Attributes
     private String bedSize;
 
-    // Constructor
+    // Constructors
     public BedroomCollection() {
         super();
         this.setFurnitureCategory("Bed");

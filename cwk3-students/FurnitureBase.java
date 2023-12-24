@@ -14,7 +14,7 @@
 import java.util.ArrayList;
 
 abstract class FurnitureBase {
-   // attributes
+   // Attributes
    private String id; // Unique identifier for the furniture item
    private String furnitureCategory; // Category or type of the furniture item (e.g., chair, table, bed)
    private int itemCount; // Number of items available in the inventory
@@ -22,15 +22,12 @@ abstract class FurnitureBase {
    private static ArrayList<FurnitureBase> furnitureInventory = new ArrayList<>(); // Collection of all FurnitureBase
                                                                                    // objects in the inventory
 
-   // constructor
+   // Constructors
    /**
     * Constructs a new FurnitureBase with default values.
     */
    public FurnitureBase() {
-      this.id = "";
-      this.furnitureCategory = "Undefined";
-      this.itemCount = 0;
-      this.price = 0.0;
+      this("", "Undefined", 0, 0.0);
       furnitureInventory.add(this);
    }
 
@@ -50,7 +47,7 @@ abstract class FurnitureBase {
       furnitureInventory.add(this);
    }
 
-   // methods
+   // Methods
    /**
     * Gets the unique identifier of the furniture item.
     * 

@@ -5,10 +5,10 @@
  * for wardrobes.
  */
 public class WardrobeItem extends FurnitureBase {
-    // attributes
+    // Attributes
     private String wardrobeMaterial;
 
-    // constructor
+    // Constructors
     public WardrobeItem() {
         super();
         this.setFurnitureCategory("Wardrobe");
@@ -20,7 +20,7 @@ public class WardrobeItem extends FurnitureBase {
         this.wardrobeMaterial = wardrobeMaterial;
     }
 
-    // methods
+    // Methods
     @Override
     public double calculateDiscount() {
         return getPrice() * 0.1;

@@ -11,10 +11,12 @@
  * displayDetails method.
  */
 public class Order {
+    // Attributes
     private String id; // Unique identifier for the order
     private FurnitureBase furnitureItem; // FurnitureBase item included in the order
     private Purchaser purchaser; // Purchaser associated with the order
     private int quantity; // Quantity of items in the order
+    // Constructors
 
     /**
      * Constructs a new Order with the given parameters.
@@ -31,6 +33,7 @@ public class Order {
         this.quantity = quantity;
     }
 
+    // Methods
     /**
      * Gets the unique identifier of the order.
      * 

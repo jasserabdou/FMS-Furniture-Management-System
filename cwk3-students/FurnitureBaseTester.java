@@ -9,20 +9,23 @@ import java.util.*;
 
 public class FurnitureBaseTester {
     public static void main(String[] args) {
-        // Test the FurnitureBase class
-        FurnitureBase sofa = new SofaItem("1", "Leather", 2, 500.0);
-        FurnitureBase bed = new BedroomCollection("2", "King Size", 1, 1200.0);
-        FurnitureBase chair = new ChairItem("3", "Wooden", 4, 200.0);
+        // Create FurnitureBase Items
+        FurnitureBase Sofa = new SofaItem("1", "Leather Sofa", 2, 800);
+        FurnitureBase Bed = new BedroomCollection("2", "King Size Bed", 1, 1200);
+        FurnitureBase Chair = new ChairItem("3", "Wooden Chair", 5, 100);
+        FurnitureBase Table = new TableItem("4", "Dining Table", 3, 300);
+        FurnitureBase Wardrobe = new WardrobeItem("5", "3-door Wooden Wardrobe", 4, 900);
 
         // Display details of individual furniture items
-        sofa.displayDetails();
+        Sofa.displayDetails();
         System.out.println("-----------------------------");
-        bed.displayDetails();
+        Bed.displayDetails();
         System.out.println("-----------------------------");
-        chair.displayDetails();
+        Chair.displayDetails();
+        System.out.println("-----------------------------");
+        Table.displayDetails();
+        System.out.println("-----------------------------");
+        Wardrobe.displayDetails();
 
-        // Display details of all furniture items
-        System.out.println("\nAll Furniture Details:");
-        FurnitureBase.showAllFurnitureDetails();
     }
 }

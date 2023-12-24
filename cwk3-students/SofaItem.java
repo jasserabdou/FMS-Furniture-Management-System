@@ -8,7 +8,7 @@ public class SofaItem extends FurnitureBase {
     // Attributes
     private String sofaMaterial;
 
-    // Constructor
+    // Constructors
     public SofaItem() {
         super();
         this.setFurnitureCategory("Sofa");

@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class FurnitureStoreUI {
     private Scanner reader = new Scanner(System.in);
-    private FurnitureStore store = new FurnitureStore("Home Furnishings Depot", "Downtown");
+    private FurnitureStore store = new FurnitureStore("Furniture Mangement System", "Downtown");
 
     /**
      * Runs the main user interface loop, allowing users to interact with the
@@ -88,12 +88,41 @@ public class FurnitureStoreUI {
         System.out.print("Enter price: ");
         double price = reader.nextDouble();
 
-        FurnitureBase furniture1 = new ChairItem(id, category, itemCount, price);
-        FurnitureBase furniture2 = new SofaItem(id, category, itemCount, price);
-        FurnitureBase furniture3 = new BedroomCollection(id, category, itemCount, price);
-        store.addFurniture(furniture1);
-        store.addFurniture(furniture2);
-        store.addFurniture(furniture3);
+        FurnitureBase furniture = null;
+
+        // Prompt user to select the type of furniture
+        System.out.println("Select furniture type:");
+        System.out.println("1. Chair");
+        System.out.println("2. Sofa");
+        System.out.println("3. Bedroom Collection");
+        System.out.println("4. Wardrobe");
+        System.out.println("5. Table");
+
+        int furnitureTypeChoice = reader.nextInt();
+        reader.nextLine(); // Consume the newline character
+
+        switch (furnitureTypeChoice) {
+            case 1:
+                furniture = new ChairItem(id, category, itemCount, price);
+                break;
+            case 2:
+                furniture = new SofaItem(id, category, itemCount, price);
+                break;
+            case 3:
+                furniture = new BedroomCollection(id, category, itemCount, price);
+                break;
+            case 4:
+                furniture = new WardrobeItem(id, category, itemCount, price);
+                break;
+            case 5:
+                furniture = new TableItem(id, category, itemCount, price);
+                break;
+            default:
+                System.out.println("Invalid furniture type choice.");
+                return; // Exit the method if the choice is invalid
+        }
+
+        store.addFurniture(furniture);
         System.out.println("Furniture added successfully!");
     }
 
@@ -129,7 +158,7 @@ public class FurnitureStoreUI {
         boolean isOutdoor = reader.nextBoolean();
         reader.nextLine(); // Consume the newline character
 
-        FurnitureCategory category = new FurnitureCategory(id, typeName, maxLoad, isOutdoor);
+        FurnitureCategory category = new FurnitureCategory(id, typeName, maxLoad, isOutdoor, null);
         store.addCategory(category);
         System.out.println("Category added successfully!");
     }

@@ -25,13 +25,15 @@ public abstract class OfficeFurniture extends FurnitureBase {
     private boolean isErgonomic; // Indicates if the furniture is ergonomic
     private String material; // Material used in the office furniture
     private double price; // Price of the office furniture
+    // Constructors
 
     /**
      * Constructs a new OfficeFurniture with default values.
      */
     public OfficeFurniture() {
-        super();
+
         this.furnitureCategory = "";
+
         this.isErgonomic = false;
         this.material = "";
         this.price = 0.0;
@@ -46,13 +48,14 @@ public abstract class OfficeFurniture extends FurnitureBase {
      * @param price     The price of the office furniture.
      */
     public OfficeFurniture(String category, boolean ergonomic, String material, double price) {
-        super();
+
         this.furnitureCategory = category;
         this.isErgonomic = ergonomic;
         this.material = material;
         this.price = price;
     }
 
+    // Methods
     /**
      * Gets the category of the office furniture.
      * 

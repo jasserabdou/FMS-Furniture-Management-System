@@ -9,7 +9,7 @@ class ChairItem extends FurnitureBase {
     // Attributes
     private String chairMaterial;
 
-    // Constructor
+    // Constructors
     public ChairItem() {
         super();
         this.setFurnitureCategory("Chair");

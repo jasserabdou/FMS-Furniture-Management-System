@@ -1,4 +1,3 @@
-import java.util.*;
 
 /**
  * A Purchaser is a vital entity in the FurnitureStore system. Each Purchaser has an ID, 
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 class Purchaser {
-    // attributes
+    // Attributes
     private String id; // Unique identifier for the purchaser
     private String name; // Name of the purchaser
     private String furnitureType; // Preferred furniture type of the purchaser
@@ -52,7 +51,7 @@ class Purchaser {
         this.purchaseHistory = new ArrayList<>();
     }
 
-    // methods
+    // Methods
     /**
      * Gets the name of the purchaser.
      * 
@@ -112,7 +111,7 @@ class Purchaser {
      * 
      * @return The purchase history of the purchaser.
      */
-    public List<String> getPurchaseHistory() {
+    public ArrayList<String> getPurchaseHistory() {
         return purchaseHistory;
     }
 
@@ -144,4 +143,5 @@ class Purchaser {
             System.out.println("- " + item);
         }
     }
+
 }

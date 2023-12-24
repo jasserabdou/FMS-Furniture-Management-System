@@ -8,7 +8,7 @@ public class TableItem extends FurnitureBase {
     // Attributes
     private String tableMaterial;
 
-    // Constructor
+    // Constructors
     public TableItem() {
         super();
         this.setFurnitureCategory("Table");

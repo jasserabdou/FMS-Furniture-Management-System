@@ -21,7 +21,20 @@ public class FurnitureCategory {
   private Purchaser recentPurchaser; // Details of the most recent purchaser of this furniture category
   private ArrayList<String> materials; // List of materials used in the furniture category
 
-  // Constructor
+  // Constructors
+  /**
+   * Default constructor for the FurnitureCategory class.
+   * Initializes attributes with default values.
+   */
+  public FurnitureCategory() {
+    this.id = "";
+    this.typeName = "";
+    this.maximumLoad = 0.0;
+    this.isOutdoor = false;
+    this.recentPurchaser = null;
+    this.materials = new ArrayList<>();
+  }
+
   /**
    * Constructs a new FurnitureCategory with the given parameters.
    * 
@@ -29,14 +42,20 @@ public class FurnitureCategory {
    * @param typeName    The name of the furniture category.
    * @param maximumLoad The maximum load the furniture can support in kilograms.
    * @param isOutdoor   Indicates if the furniture is suitable for outdoor use.
+   * @param materials   The list of materials used in the furniture category.
    */
-  public FurnitureCategory(String id, String typeName, Double maximumLoad, boolean isOutdoor) {
+  public FurnitureCategory(String id, String typeName, Double maximumLoad, boolean isOutdoor,
+      ArrayList<String> materials) {
     this.id = id;
     this.typeName = typeName;
     this.maximumLoad = maximumLoad;
     this.isOutdoor = isOutdoor;
     this.recentPurchaser = null;
     this.materials = new ArrayList<>();
+    // Ensure materials are not null
+    if (materials != null) {
+      this.materials.addAll(materials);
+    }
   }
 
   // Methods
@@ -100,9 +119,9 @@ public class FurnitureCategory {
    * purchaser details if available.
    */
   public void displayDetails() {
-    System.out.println("Furniture Category ID: " + id);
-    System.out.println("Furniture Type Name: " + typeName);
-    System.out.println("Maximum Load: " + maximumLoad);
+    System.out.println("Furniture Category ID: " + getID());
+    System.out.println("Furniture Type Name: " + getTypeName());
+    System.out.println("Maximum Load: " + getMaxLoad());
     System.out.println("Is Suitable for Outdoor Use: " + isOutdoor);
     System.out.println("Recent Purchaser Details:");
 
@@ -113,12 +132,4 @@ public class FurnitureCategory {
     }
   }
 
-  /**
-   * Sets the most recent purchaser of the furniture category.
-   * 
-   * @param purchaser The purchaser to be set as the most recent purchaser.
-   */
-  public void setRecentPurchaser(Purchaser purchaser) {
-    this.recentPurchaser = purchaser;
-  }
 }
