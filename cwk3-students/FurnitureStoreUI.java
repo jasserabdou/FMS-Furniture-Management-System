@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class FurnitureStoreUI {
     private Scanner reader = new Scanner(System.in);
-    private FurnitureStore store = new FurnitureStore("Furniture Mangement System", "Downtown");
+    private FurnitureStore store = new FurnitureStore("Home FMS", "Downtown");
 
     /**
      * Runs the main user interface loop, allowing users to interact with the
@@ -25,6 +25,7 @@ public class FurnitureStoreUI {
         int choice = getOption();
 
         while (choice != 0) {
+
             switch (choice) {
                 case 1:
                     addFurniture();
@@ -79,51 +80,82 @@ public class FurnitureStoreUI {
      * Adds a new furniture item to the store's inventory based on user input.
      */
     private void addFurniture() {
-        System.out.print("Enter furniture ID: ");
-        String id = reader.nextLine();
-        System.out.print("Enter furniture category: ");
-        String category = reader.nextLine();
-        System.out.print("Enter item count: ");
-        int itemCount = reader.nextInt();
-        System.out.print("Enter price: ");
-        double price = reader.nextDouble();
+        try {
+            System.out.print("Enter furniture ID: ");
+            String id = reader.nextLine();
 
-        FurnitureBase furniture = null;
+            System.out.print("Enter furniture category: ");
+            String category = reader.nextLine();
 
-        // Prompt user to select the type of furniture
-        System.out.println("Select furniture type:");
-        System.out.println("1. Chair");
-        System.out.println("2. Sofa");
-        System.out.println("3. Bedroom Collection");
-        System.out.println("4. Wardrobe");
-        System.out.println("5. Table");
+            System.out.print("Enter item count: ");
+            int itemCount = 0;
 
-        int furnitureTypeChoice = reader.nextInt();
-        reader.nextLine(); // Consume the newline character
+            try {
+                itemCount = reader.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input for item count. Please enter a valid integer.");
+                reader.nextLine(); // Consume the invalid input
+                return; // Exit the method
+            }
 
-        switch (furnitureTypeChoice) {
-            case 1:
-                furniture = new ChairItem(id, category, itemCount, price);
-                break;
-            case 2:
-                furniture = new SofaItem(id, category, itemCount, price);
-                break;
-            case 3:
-                furniture = new BedroomCollection(id, category, itemCount, price);
-                break;
-            case 4:
-                furniture = new WardrobeItem(id, category, itemCount, price);
-                break;
-            case 5:
-                furniture = new TableItem(id, category, itemCount, price);
-                break;
-            default:
-                System.out.println("Invalid furniture type choice.");
-                return; // Exit the method if the choice is invalid
+            System.out.print("Enter price: ");
+            double price = 0.0;
+
+            try {
+                price = reader.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input for price. Please enter a valid number.");
+                reader.nextLine(); // Consume the invalid input
+                return; // Exit the method
+            }
+
+            FurnitureBase furniture = null;
+
+            // Prompt user to select the type of furniture
+            System.out.println("Select furniture type:");
+            System.out.println("1. Chair");
+            System.out.println("2. Sofa");
+            System.out.println("3. Bedroom Collection");
+            System.out.println("4. Wardrobe");
+            System.out.println("5. Table");
+
+            int furnitureTypeChoice = 0;
+
+            try {
+                furnitureTypeChoice = reader.nextInt();
+                reader.nextLine(); // Consume the newline character
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input for furniture type choice. Please enter a valid integer.");
+                reader.nextLine(); // Consume the invalid input
+                return; // Exit the method
+            }
+
+            switch (furnitureTypeChoice) {
+                case 1:
+                    furniture = new ChairItem(id, category, itemCount, price);
+                    break;
+                case 2:
+                    furniture = new SofaItem(id, category, itemCount, price);
+                    break;
+                case 3:
+                    furniture = new BedroomCollection(id, category, itemCount, price);
+                    break;
+                case 4:
+                    furniture = new WardrobeItem(id, category, itemCount, price);
+                    break;
+                case 5:
+                    furniture = new TableItem(id, category, itemCount, price);
+                    break;
+                default:
+                    System.out.println("Invalid furniture type choice.");
+                    return; // Exit the method if the choice is invalid
+            }
+
+            store.addFurniture(furniture);
+            System.out.println("Furniture added successfully!");
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
         }
-
-        store.addFurniture(furniture);
-        System.out.println("Furniture added successfully!");
     }
 
     /**
