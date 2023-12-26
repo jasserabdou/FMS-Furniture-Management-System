@@ -1,4 +1,3 @@
-import java.util.*;
 
 /**
  * The FurnitureBaseTester class is responsible for validating and demonstrating

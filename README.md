@@ -19,7 +19,7 @@ To launch the FMS project, follow these step-by-step instructions:
 - **`cw3-students/`:** Contains the source code files.
 - **`docs/(FMS) UML-diagram Design.png`:** Illustrates the Furniture Management System UML diagram.
 - **`docs/Cwk 3 FMS specification.pdf`:** Contains the detailed FMS specification document.
-- **`docs/Classesdocs`:** Houses the documentation for the Java classes.
+
 
 ## Version Information
 

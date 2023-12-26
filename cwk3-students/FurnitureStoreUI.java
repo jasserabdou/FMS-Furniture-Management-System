@@ -80,82 +80,44 @@ public class FurnitureStoreUI {
      * Adds a new furniture item to the store's inventory based on user input.
      */
     private void addFurniture() {
-        try {
-            System.out.print("Enter furniture ID: ");
-            String id = reader.nextLine();
+        System.out.print("Enter furniture ID: ");
+        String id = reader.nextLine();
 
-            System.out.print("Enter furniture category: ");
-            String category = reader.nextLine();
+        System.out.print("Enter furniture category: ");
+        String category = reader.nextLine();
 
-            System.out.print("Enter item count: ");
-            int itemCount = 0;
+        System.out.print("Enter item count: ");
+        int itemCount = reader.nextInt();
+        reader.nextLine();
 
-            try {
-                itemCount = reader.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input for item count. Please enter a valid integer.");
-                reader.nextLine(); // Consume the invalid input
-                return; // Exit the method
-            }
+        System.out.print("Enter price: ");
+        double price = reader.nextDouble();
+        reader.nextLine();
 
-            System.out.print("Enter price: ");
-            double price = 0.0;
-
-            try {
-                price = reader.nextDouble();
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input for price. Please enter a valid number.");
-                reader.nextLine(); // Consume the invalid input
-                return; // Exit the method
-            }
-
-            FurnitureBase furniture = null;
-
-            // Prompt user to select the type of furniture
-            System.out.println("Select furniture type:");
-            System.out.println("1. Chair");
-            System.out.println("2. Sofa");
-            System.out.println("3. Bedroom Collection");
-            System.out.println("4. Wardrobe");
-            System.out.println("5. Table");
-
-            int furnitureTypeChoice = 0;
-
-            try {
-                furnitureTypeChoice = reader.nextInt();
-                reader.nextLine(); // Consume the newline character
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input for furniture type choice. Please enter a valid integer.");
-                reader.nextLine(); // Consume the invalid input
-                return; // Exit the method
-            }
-
-            switch (furnitureTypeChoice) {
-                case 1:
-                    furniture = new ChairItem(id, category, itemCount, price);
-                    break;
-                case 2:
-                    furniture = new SofaItem(id, category, itemCount, price);
-                    break;
-                case 3:
-                    furniture = new BedroomCollection(id, category, itemCount, price);
-                    break;
-                case 4:
-                    furniture = new WardrobeItem(id, category, itemCount, price);
-                    break;
-                case 5:
-                    furniture = new TableItem(id, category, itemCount, price);
-                    break;
-                default:
-                    System.out.println("Invalid furniture type choice.");
-                    return; // Exit the method if the choice is invalid
-            }
-
-            store.addFurniture(furniture);
-            System.out.println("Furniture added successfully!");
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
+        FurnitureBase furnitureItem;
+        switch (category.toLowerCase()) {
+            case "chair":
+                furnitureItem = new ChairItem(id, category, itemCount, price);
+                break;
+            case "sofa":
+                furnitureItem = new SofaItem(id, category, itemCount, price);
+                break;
+            case "bed":
+                furnitureItem = new BedroomCollection(id, category, itemCount, price);
+                break;
+            case "wardrobe":
+                furnitureItem = new WardrobeItem(id, category, itemCount, price);
+                break;
+            case "table":
+                furnitureItem = new TableItem(id, category, itemCount, price);
+                break;
+            default:
+                System.out.println("Invalid furniture category");
+                return;
         }
+
+        store.addFurniture(furnitureItem);
+        System.out.println("Furniture added successfully!");
     }
 
     /**
@@ -188,7 +150,7 @@ public class FurnitureStoreUI {
         double maxLoad = reader.nextDouble();
         System.out.print("Is outdoor (true/false): ");
         boolean isOutdoor = reader.nextBoolean();
-        reader.nextLine(); // Consume the newline character
+        reader.nextLine();
 
         FurnitureCategory category = new FurnitureCategory(id, typeName, maxLoad, isOutdoor, null);
         store.addCategory(category);

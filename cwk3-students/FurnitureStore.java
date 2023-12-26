@@ -1,10 +1,10 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The FurnitureStore class implements the FIRE FURNITUREInterface interface.
  * It represents a furniture store with information about furniture items,
- * customer orders,
- * and furniture suppliers.
+ * customer orders, and furniture suppliers.
  */
 public class FurnitureStore implements FURNITUREInterface {
 
@@ -15,32 +15,6 @@ public class FurnitureStore implements FURNITUREInterface {
     private ArrayList<FurnitureBase> furnitureItems; // List of furniture items in the store
     private ArrayList<Purchaser> customerOrders; // List of customer orders
     private ArrayList<FurnitureCategory> suppliers; // List of furniture suppliers
-
-    // Furniture items
-    FurnitureBase Sofa = new SofaItem("1", "Leather Sofa", 2, 800);
-    FurnitureBase Bed = new BedroomCollection("2", "King Size Bed", 1, 1200);
-    FurnitureBase Chair = new ChairItem("3", "Wooden Chair", 5, 100);
-    FurnitureBase Table = new TableItem("4", "Dining Table", 3, 300);
-    FurnitureBase Wardrobe = new WardrobeItem("5", "3-door Wooden Wardrobe", 4, 900);
-
-    // Purchasers
-    Purchaser IKEA = new Purchaser("1", "IKEA", "", "Email: ikea@example.com", null);
-    Purchaser Walmart = new Purchaser("2", "Walmart", "", "Email: walmart@example.com", null);
-    Purchaser WestElm = new Purchaser("3", "West Elm", "", "Email: westelm@example.com", null);
-    Purchaser Target = new Purchaser("4", "Target", "", "Email: target@example.com", null);
-    Purchaser HomeGoods = new Purchaser("5", "HomeGoods", "", "Email: homegoods@example.com", null);
-
-    // Furniture categories
-    FurnitureCategory SofaSupplier = new FurnitureCategory("1", "Sofa", 150.0, false,
-            new ArrayList<>(Arrays.asList("Wood", "Leather")));
-    FurnitureCategory BedSupplier = new FurnitureCategory("2", "Bed", 200.0, false,
-            new ArrayList<>(Arrays.asList("Wood", "Metal")));
-    FurnitureCategory ChairSupplier = new FurnitureCategory("3", "Chair", 100.0, true,
-            new ArrayList<>(Arrays.asList("Plywood", "Metal")));
-    FurnitureCategory TableSupplier = new FurnitureCategory("4", "Table", 80.0, true,
-            new ArrayList<>(Arrays.asList("Wood", "Metal")));
-    FurnitureCategory WardrobeSupplier = new FurnitureCategory("5", "Wardrobe", 300.0, false,
-            new ArrayList<>(Arrays.asList("Wood", "Stainless steel")));
 
     // Constructor
 
@@ -58,28 +32,49 @@ public class FurnitureStore implements FURNITUREInterface {
         furnitureItems = new ArrayList<>();
         customerOrders = new ArrayList<>();
         suppliers = new ArrayList<>();
-
         loadFurnitureAndSuppliers();
         loadOrders();
+
     }
 
     // Implementation of the methods from FURNITURE interface
 
+    /**
+     * Adds a furniture item to the list of furniture items.
+     *
+     * @param furniture The furniture item to be added.
+     */
     @Override
     public void addFurniture(FurnitureBase furniture) {
         furnitureItems.add(furniture);
     }
 
+    /**
+     * Adds a purchaser to the list of customer orders.
+     *
+     * @param purchaser The purchaser to be added.
+     */
     @Override
     public void addPurchaser(Purchaser purchaser) {
         customerOrders.add(purchaser);
     }
 
+    /**
+     * Adds a furniture category to the list of suppliers.
+     *
+     * @param category The furniture category to be added.
+     */
     @Override
     public void addCategory(FurnitureCategory category) {
         suppliers.add(category);
     }
 
+    /**
+     * Retrieves a furniture item based on its ID.
+     *
+     * @param id The ID of the furniture item.
+     * @return The retrieved furniture item or null if not found.
+     */
     @Override
     public FurnitureBase getFurnitureByID(String id) {
         for (FurnitureBase furniture : furnitureItems) {
@@ -90,6 +85,12 @@ public class FurnitureStore implements FURNITUREInterface {
         return null;
     }
 
+    /**
+     * Retrieves a purchaser based on their ID.
+     *
+     * @param id The ID of the purchaser.
+     * @return The retrieved purchaser or null if not found.
+     */
     @Override
     public Purchaser getPurchaserByID(String id) {
         for (Purchaser purchaser : customerOrders) {
@@ -100,6 +101,12 @@ public class FurnitureStore implements FURNITUREInterface {
         return null;
     }
 
+    /**
+     * Retrieves a furniture category based on its ID.
+     *
+     * @param id The ID of the furniture category.
+     * @return The retrieved furniture category or null if not found.
+     */
     @Override
     public FurnitureCategory getCategoryByID(String id) {
         for (FurnitureCategory category : suppliers) {
@@ -118,9 +125,23 @@ public class FurnitureStore implements FURNITUREInterface {
      * and adding them to the respective lists.
      */
     private void loadFurnitureAndSuppliers() {
-        furnitureItems.addAll(List.of(Chair, Table, Sofa, Bed, Wardrobe));
-        suppliers.addAll(List.of(ChairSupplier, TableSupplier, SofaSupplier, BedSupplier, WardrobeSupplier));
+        // Logic to populate furnitureItems and suppliers
+        // This may involve instantiating new FurnitureBase and Purchaser objects and
+        // adding them to the respective lists.
+        furnitureItems.addAll(Arrays.asList(
+                new SofaItem("1", "Leather Sofa", 2, 800),
+                new BedroomCollection("2", "King Size Bed", 1, 1200),
+                new ChairItem("3", "Wooden Chair", 5, 100),
+                new TableItem("4", "Dining Table", 3, 300),
+                new WardrobeItem("5", "3-door Wooden Wardrobe", 4, 900)));
 
+        suppliers.addAll(Arrays.asList(
+                new FurnitureCategory("1", "Sofa", 150.0, false, new ArrayList<>(Arrays.asList("Wood", "Leather"))),
+                new FurnitureCategory("2", "Bed", 200.0, false, new ArrayList<>(Arrays.asList("Wood", "Metal"))),
+                new FurnitureCategory("3", "Chair", 100.0, true, new ArrayList<>(Arrays.asList("Plywood", "Metal"))),
+                new FurnitureCategory("4", "Table", 80.0, true, new ArrayList<>(Arrays.asList("Wood", "Metal"))),
+                new FurnitureCategory("5", "Wardrobe", 300.0, false,
+                        new ArrayList<>(Arrays.asList("Wood", "Stainless steel")))));
     }
 
     /**
@@ -129,7 +150,15 @@ public class FurnitureStore implements FURNITUREInterface {
      * and adding them to the list.
      */
     private void loadOrders() {
-        customerOrders.addAll(List.of(IKEA, Walmart, WestElm, Target, HomeGoods));
+        // Logic to populate customerOrders
+        // This may involve instantiating new FurnitureCategory objects and adding them
+        // to the list.
+        customerOrders.addAll(Arrays.asList(
+                new Purchaser("1", "IKEA", "Chair", "Email: ikea@example.com", null),
+                new Purchaser("2", "Walmart", "Table", "Email: walmart@example.com", null),
+                new Purchaser("3", "West Elm", "Sofa", "Email: westelm@example.com", null),
+                new Purchaser("4", "Target", "Bed", "Email: target@example.com", null),
+                new Purchaser("5", "HomeGoods", "Wardrobe", "Email: homegoods@example.com", null)));
 
         for (Purchaser purchaser : customerOrders) {
             String itemName = purchaser.getName();
@@ -139,19 +168,6 @@ public class FurnitureStore implements FURNITUREInterface {
                 purchaser.addToPurchaseHistory(itemName);
             }
         }
-    }
-
-    /**
-     * Gets the quantity for a given purchaser.
-     * Placeholder method, replace with actual logic.
-     *
-     * @param purchaser The purchaser for whom to retrieve the quantity.
-     * @return The quantity for the purchaser.
-     */
-    private int getQuantityForPurchaser(Purchaser purchaser) {
-        // Add your logic to retrieve the quantity based on the purchaser
-        // For now, returning a default value of 1
-        return 1;
     }
 
     /**
@@ -202,4 +218,33 @@ public class FurnitureStore implements FURNITUREInterface {
         return getCategoryByID(id);
     }
 
+    /**
+     * Retrieves the quantity of items to be purchased for a given purchaser.
+     * This method could be expanded to include more sophisticated logic
+     * based on the purchaser details.
+     *
+     * @param purchaser The purchaser for whom the quantity is determined.
+     * @return The quantity of items to be purchased.
+     */
+    private int getQuantityForPurchaser(Purchaser purchaser) {
+        // Implement logic to determine the quantity based on purchaser details
+        // For the sake of this example, returning a constant quantity.
+        return 1;
+    }
+
+    /**
+     * Returns a string representation of the FurnitureStore object.
+     *
+     * @return A string representation of the FurnitureStore.
+     */
+    @Override
+    public String toString() {
+        return "FurnitureStore{" +
+                "storeName='" + storeName + '\'' +
+                ", location='" + location + '\'' +
+                ", furnitureItems=" + furnitureItems +
+                ", customerOrders=" + customerOrders +
+                ", suppliers=" + suppliers +
+                '}';
+    }
 }

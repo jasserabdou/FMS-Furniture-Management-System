@@ -27,11 +27,11 @@ public class Tester {
         FurnitureBase Wardrobe = new WardrobeItem("5", "3-door Wooden Wardrobe", 4, 900);
 
         // Creating purchasers
-        Purchaser IKEA = new Purchaser("1", "IKEA", "", "Email: ikea@example.com", null);
-        Purchaser Walmart = new Purchaser("2", "Walmart", "", "Email: walmart@example.com", null);
-        Purchaser WestElm = new Purchaser("3", "West Elm", "", "Email: westelm@example.com", null);
-        Purchaser Target = new Purchaser("4", "Target", "", "Email: target@example.com", null);
-        Purchaser HomeGoods = new Purchaser("5", "HomeGoods", "", "Email: homegoods@example.com", null);
+        Purchaser IKEA = new Purchaser("1", "IKEA", "Chair", "Email: ikea@example.com", null);
+        Purchaser Walmart = new Purchaser("2", "Walmart", "Table", "Email: walmart@example.com", null);
+        Purchaser WestElm = new Purchaser("3", "West Elm", "Sofa", "Email: westelm@example.com", null);
+        Purchaser Target = new Purchaser("4", "Target", "Bed", "Email: target@example.com", null);
+        Purchaser HomeGoods = new Purchaser("5", "HomeGoods", "Wardrobe", "Email: homegoods@example.com", null);
 
         // Creating orders
         Order order1 = new Order("101", Chair, IKEA, 5);
