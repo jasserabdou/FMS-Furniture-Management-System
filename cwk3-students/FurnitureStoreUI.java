@@ -133,8 +133,8 @@ public class FurnitureStoreUI {
         System.out.print("Enter contact details: ");
         String contactDetails = reader.nextLine();
 
-        Purchaser purchaser1 = new Purchaser(id, name, furnitureType, contactDetails, null);
-        store.addPurchaser(purchaser1);
+        Purchaser purchaser = new Purchaser(id, name, furnitureType, contactDetails, null);
+        store.addPurchaser(purchaser);
         System.out.println("Purchaser added successfully!");
     }
 
